@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Play 'Arjuna: The Archer' free online">
+    <style >
+    body {
+        background-color: black;
+        color: white;
+    }
+    #title {
+        text-align: center;
+    }
+    #my-game {
+        display: none;
+    }
+    #rotateImgDiv {
+        display: none;
+    }
+    #startTempelate {
+        display: none;
+        width: 100%;
+        padding: 20px;
+        text-align: center;
+        margin: 0 auto;
+    }
+    video {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 300px;
+  height: 150px;
+  border-radius: 10px;
+}
+    #startLoadBtn {
+        display: block;
+        background-color: #39ff14;
+        color: black;
+        border-radius: 20px;
+        outline: none;
+        border: 0;
+        font-size: 20px;
+        margin:0 auto;
+        padding: 10px,30px,10px,30px;
+        width: 20%;
+        top: 45%;
+    }
+</style>
+    <title>Play Arjuna: The Archer</title>
+    <link rel="stylesheet" href="style.css">
+    
+    <script>
+    // Detect Safari 
+
+let safariAgent = userAgentString.indexOf("Safari") > -1; 
+
+  
+// Discard Safari since it also matches Chrome 
+
+if ((chromeAgent) && (safariAgent)) safariAgent = false;
+if (safariAgent) {alert("This game is not supported on Safari Browser. Please use Chrome or any other browser.");}
+var elem = document.documentElement;
+function openFullscreen() {
+  if (elem.requestFullscreen) {
+    elem.requestFullscreen();
+  } else if (elem.webkitRequestFullscreen) { /* Safari */
+    elem.webkitRequestFullscreen();
+  } else if (elem.msRequestFullscreen) { /* IE11 */
+    elem.msRequestFullscreen();
+  }
+  makeExitConfigs();
+  document.getElementById("title").style.display = "none";
+  document.getElementById("startTempelate").style.display = "none";
+  document.getElementById("my-game").style.display = "block";
+}
+
+function closeFullscreen() {
+  if (document.exitFullscreen) {
+    document.exitFullscreen();
+  } else if (document.webkitExitFullscreen) { /* Safari */
+    document.webkitExitFullscreen();
+  } else if (document.msExitFullscreen) { /* IE11 */
+    document.msExitFullscreen();
+  }
+}
+
+</script>
+
+</head>
+
+
+<body>
+    <h1 id="title">Arjuna: The Archer</h1>
+    <div id="my-game"></div>
+    <div id="rotateImgDiv">
+    <img id="rotateImg" src="assets/rotate.png" alt="Rotate Device" />
+    <h1>Please disable orientation lock and Rotate your device to Landscape mode as this game works best in it.</h1>
+    </div>
+    <div id="startTempelate">
+    How To Play
+    <video autoplay muted loop>
+  <source src="assets/demo.mp4" type="video/mp4">
+Your browser does not support the video tag to play the demo video.
+    </video>
+    Swipe Left at any angle to Shoot the enemies...
+    <br/><br/>
+    <button id="startLoadBtn" onclick="openFullscreen();">Play</button>
+    </div>
+
+<script src="js/removeBanner.js"></script>
+<script src="js/phaser.min.js"></script>
+<script src="js/exit.js"></script>
+<script src="js/handleStartOrientation.js"></script>
+<script src="js/game.js"></script>
+</body>
+</html>
